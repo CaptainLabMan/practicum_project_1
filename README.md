@@ -1,3 +1,5 @@
+mamba env create -f environment.yml -n practicum_project_1
+
 # 1. Where to get the data.  
 Выполнить setup.sh  
 Скачать вручную риды по [ссылке](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3)  
