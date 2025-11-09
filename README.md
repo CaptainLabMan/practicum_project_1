@@ -14,17 +14,14 @@ gunzip -c reads/amp_res_2.fastq.gz | wc -l
  - amp_res_2.fastq.gz - 1823504  
 
 ```bash
-mamba install -c bioconda seqkit
-
-seqkit stats reads/amp_res_1.fastq.gz > seqsit_stats_output.txt
-
+mamba install -c bioconda seqkit  
+seqkit stats reads/amp_res_1.fastq.gz > seqsit_stats_output.txt  
 seqkit stats reads/amp_res_2.fastq.gz >> seqsit_stats_output.txt  
 ```
 
 # 3. Inspect raw sequencing data with FastQC. Filtering the reads.  
 ``` bash
-mamba install bioconda::fastqc
-
+mamba install bioconda::fastqc  
 fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz  
 ```
 
@@ -41,8 +38,7 @@ fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 
 # 4. (Optional, 1 bonus point) Filtering the reads. 
 ```bash 
-mamba install bioconda::trimmomatic
-
+mamba install bioconda::trimmomatic  
 trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_1.fastq_1U.gz reads/trimmed/amp_res_2.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20 2> reads/trimmed/trimmomatic.log
 ```  
 **Output:** Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
@@ -66,8 +62,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimm
 
  *What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
  ```bash
- trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log
-
+ trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log  
  fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2P.gz
  ```
 
@@ -76,8 +71,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimm
  # 5 . Aligning sequences to reference
  ## 5.1 Index the reference file 
 ```bash
-mamba install bioconda::bwa
-
+mamba install bioconda::bwa  
 bwa index refs/GCF_000005845.2_ASM584v2_genomic.fna.gz
 ```
 
@@ -91,10 +85,8 @@ bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fas
 
 ## 5.3. Compress SAM file
 ```bash
-mamba install bioconda::samtools
-
-samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log
-
+mamba install bioconda::samtools  
+samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log  
 samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log
 ```  
 
@@ -104,23 +96,19 @@ samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2>
 
  ## 5.4 Sort and index BAM file
  ```bash
- samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log
-
+ samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log  
  samtools index alignments/alignment_sorted.bam  2> alignments/samtools_index.log
  ```
 
  ```bash
- mamba install bioconda::igv
-
+ mamba install bioconda::igv  
  gunzip -c refs/GCF_000005845.2_ASM584v2_genomic.fna.gz > refs/GCF_000005845.2_ASM584v2_genomic.fna
  ```
 
  #  6. Variant calling
  ```bash
- samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log
-
- mamba install bioconda::varscan
-
+ samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log  
+ mamba install bioconda::varscan  
  varscan mpileup2cns mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
  ```  
 
