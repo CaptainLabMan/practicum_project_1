@@ -58,8 +58,8 @@ fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 
 🤔 **Task:** *On the left, you’ll see a navigation window with green (normal), yellow (slightly abnormal), and red (very unusual) circles for several kinds of data analysis. If you have any red circles, record them in your notebook:*  
 ✅ **Answer:**  
- - amp_res_1.fastq.gz: Per base sequence quality, Per tile sequence quality  
- - amp_res_2.fastq.gz: Per base sequence quality  
+> amp_res_1.fastq.gz: Per base sequence quality, Per tile sequence quality  
+> amp_res_2.fastq.gz: Per base sequence quality  
 
 🤔 **Task:** *Mention the QC results in your lab report.*  
 ✅ **Answer. FastQC results:**  
@@ -74,39 +74,46 @@ fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 > It depends on the results. In this case, we can remove reads or their parts that do not meet the quality criteria.
 
 # 4. (Optional, 1 bonus point) Filtering the reads. 
+<details> 
+<summary>Show code</summary>
+
 ```bash 
-mamba install bioconda::trimmomatic  
 trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_1.fastq_1U.gz reads/trimmed/amp_res_2.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20 2> reads/trimmed/trimmomatic.log
+
+fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1P.gz
 ```  
-**Output:** Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
+</details>
+
+📈 **Trimmomatic output:** Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
+
+🤔 *What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
+
+<details> 
+<summary>Show code</summary>
 
 ```bash
-fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1P.gz
+trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log 
+
+fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2P.gz
 ```
+</details>
 
-## Total Sequences
-**Before trimming**
- - amp_res_1.fastq.gz - 455876
- - amp_res_2.fastq.gz - 455876  
+✅ **Answer:**
+> **Total Sequences**
+> **Before trimming:**
+>> amp_res_1.fastq.gz - 455876  
+>> amp_res_2.fastq.gz - 455876  
 
- **After trimming (qual=20)**
- - amp_res_1.fastq_1P.gz - 430758
- - amp_res_2.fastq_1P.gz - 430758
+> **After trimming (qual=20):**
+>> amp_res_1.fastq_1P.gz - 430758  
+>> amp_res_2.fastq_1P.gz - 430758
 
-  **After trimming (qual=30)**
- - amp_res_1.fastq_1.2P.gz - 363413
- - amp_res_2.fastq_1.2P.gz - 363413
+> **After trimming (qual=30):**
+>> amp_res_1.fastq_1.2P.gz - 363413  
+>> amp_res_2.fastq_1.2P.gz - 363413
 
- *What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
- ```bash
- trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log  
- fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2P.gz
- ```
-
- **Answer:** ?????  
-
- # 5 . Aligning sequences to reference
- ## 5.1 Index the reference file 
+# 5 . Aligning sequences to reference
+## 5.1 Index the reference file 
 ```bash
 mamba install bioconda::bwa  
 bwa index refs/GCF_000005845.2_ASM584v2_genomic.fna.gz
