@@ -43,3 +43,4 @@ cat vcf/VarScan_results_annotated.vcf | ./scripts/vcfEffOnePerLine.pl | snpsift 
 "ANN[*].ERRORS" \
 > VarScan_results_annotated.tsv
 awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results_annotated_main.tsv
+python3 scripts/tsv2md.py VarScan_results_annotated_main.tsv > VarScan_results_annotated_main.md
