@@ -3,10 +3,10 @@ gunzip -c reads/amp_res_2.fastq.gz | wc -l >> reads/reads_wc_stats.txt
 seqkit stats reads/amp_res_1.fastq.gz > reads/seqsit_stats_output.txt  
 seqkit stats reads/amp_res_2.fastq.gz >> reads/seqsit_stats_output.txt  
 fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
-echo "Trimmomatic running"
+echo "Trimmomatic running..."
 trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_1.fastq_1U.gz reads/trimmed/amp_res_2.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20 2> reads/trimmed/trimmomatic.log
 fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1P.gz
-echo "Trimmomatic running"
+echo "Trimmomatic running..."
 trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log  
 fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2P.gz
 bwa index refs/GCF_000005845.2_ASM584v2_genomic.fna.gz

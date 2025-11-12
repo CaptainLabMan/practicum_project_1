@@ -28,8 +28,8 @@ sh run.sh
 <summary>Show code</summary>
 
 ```bash
-gunzip -c reads/amp_res_1.fastq.gz | wc -l
-gunzip -c reads/amp_res_2.fastq.gz | wc -l
+gunzip -c reads/amp_res_1.fastq.gz | wc -l > reads/reads_wc_stats.txt
+gunzip -c reads/amp_res_2.fastq.gz | wc -l >> reads/reads_wc_stats.txt
 
 seqkit stats reads/amp_res_1.fastq.gz > reads/seqsit_stats_output.txt
 seqkit stats reads/amp_res_2.fastq.gz >> reads/seqsit_stats_output.txt
