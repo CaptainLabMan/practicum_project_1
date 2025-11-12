@@ -12,7 +12,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/tri
 bwa index refs/GCF_000005845.2_ASM584v2_genomic.fna.gz
 bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1P.gz > alignments/alignment.sam 2> alignments/bwa_mem.log
 samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log  
-samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log
+samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log  
 samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log  
 samtools index alignments/alignment_sorted.bam 2> alignments/samtools_index.log
 gunzip -c refs/GCF_000005845.2_ASM584v2_genomic.fna.gz > refs/GCF_000005845.2_ASM584v2_genomic.fna

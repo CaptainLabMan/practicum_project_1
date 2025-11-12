@@ -3,8 +3,5 @@ NC_000913.3	93043	C	G		PASS	16	0	0	1	0	G	missense_variant	MODERATE	ftsI	b0084	tr
 NC_000913.3	482698	T	A		PASS	16	0	0	1	0	A	missense_variant	MODERATE	acrB	b0462	transcript	b0462	protein_coding	1	c.1706A>T	p.Gln569Leu	1706	3150	1706	3150	569	1049	0	
 NC_000913.3	852762	A	G		PASS	14	0	0	1	0	G	intragenic_variant	MODIFIER	rybA	b4416	gene_variant	b4416		-1	n.852762A>G		-1	-1	-1	-1	-1	-1	0	
 NC_000913.3	1905761	G	A		PASS	13	0	0	1	0	A	missense_variant	MODERATE	mntP	b1821	transcript	b1821	protein_coding	1	c.74G>A	p.Gly25Asp	74	567	74	567	25	188	0	
-NC_000913.3	2173360	ACC	A		PASS	13	0	0	1	0	A	intragenic_variant	MODIFIER	gatC	b2092	gene_variant	b2092		-1	n.2173363_2173364delCC		-1	-1	-1	-1	-1	-1	0	
 NC_000913.3	3535147	A	C		PASS	16	0	0	1	0	C	missense_variant	MODERATE	envZ	b3404	transcript	b3404	protein_coding	1	c.722T>G	p.Val241Gly	722	1353	722	1353	241	450	0	
-NC_000913.3	3560455	C	CG		PASS	9	0	0	1	0	CG	intragenic_variant	MODIFIER	glpR	b3423	gene_variant	b3423		-1	n.3560455_3560456insG		-1	-1	-1	-1	-1	-1	0	
-NC_000913.3	4296380	A	ACG		PASS	10	0	0	1	0	ACG	intergenic_region	MODIFIER	gltP-yjcO	b4077-b4078	intergenic_region	b4077-b4078		-1	n.4296380_4296381insCG		-1	-1	-1	-1	-1	-1	0	
 NC_000913.3	4390754	G	T		PASS	15	0	0	1	0	T	synonymous_variant	LOW	rsgA	b4161	transcript	b4161	protein_coding	1	c.756C>A	p.Ala252Ala	756	1053	756	1053	252	350	0	WARNING_TRANSCRIPT_NO_START_CODON
