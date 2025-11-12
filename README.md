@@ -211,14 +211,103 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 </details> 
 
 # Result annotated variants table
-| CHROM       |     POS | REF   | ALT   |   ID | FILTER   |   ADP |   WT |   HET |   HOM |   NC | ANN[*].ALLELE   | ANN[*].EFFECT      | ANN[*].IMPACT   | ANN[*].GENE   | ANN[*].GENEID   | ANN[*].FEATURE    | ANN[*].FEATUREID   | ANN[*].BIOTYPE   |   ANN[*].RANK | ANN[*].HGVS_C          | ANN[*].HGVS_P   |   ANN[*].CDNA_POS |   ANN[*].CDNA_LEN |   ANN[*].CDS_POS |   ANN[*].CDS_LEN |   ANN[*].AA_POS |   ANN[*].AA_LEN |   ANN[*].DISTANCE | ANN[*].ERRORS                     |
-|-------------|---------|-------|-------|------|----------|-------|------|-------|-------|------|-----------------|--------------------|-----------------|---------------|-----------------|-------------------|--------------------|------------------|---------------|------------------------|-----------------|-------------------|-------------------|------------------|------------------|-----------------|-----------------|-------------------|-----------------------------------|
-| NC_000913.3 |   93043 | C     | G     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | G               | missense_variant   | MODERATE        | ftsI          | b0084           | transcript        | b0084              | protein_coding   |             1 | c.1631C>G              | p.Ala544Gly     |              1631 |              1767 |             1631 |             1767 |             544 |             588 |                 0 | nan                               |
-| NC_000913.3 |  482698 | T     | A     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | A               | missense_variant   | MODERATE        | acrB          | b0462           | transcript        | b0462              | protein_coding   |             1 | c.1706A>T              | p.Gln569Leu     |              1706 |              3150 |             1706 |             3150 |             569 |            1049 |                 0 | nan                               |
-| NC_000913.3 |  852762 | A     | G     |  nan | PASS     |    14 |    0 |     0 |     1 |    0 | G               | intragenic_variant | MODIFIER        | rybA          | b4416           | gene_variant      | b4416              | nan              |            -1 | n.852762A>G            | nan             |                -1 |                -1 |               -1 |               -1 |              -1 |              -1 |                 0 | nan                               |
-| NC_000913.3 | 1905761 | G     | A     |  nan | PASS     |    13 |    0 |     0 |     1 |    0 | A               | missense_variant   | MODERATE        | mntP          | b1821           | transcript        | b1821              | protein_coding   |             1 | c.74G>A                | p.Gly25Asp      |                74 |               567 |               74 |              567 |              25 |             188 |                 0 | nan                               |
-| NC_000913.3 | 2173360 | ACC   | A     |  nan | PASS     |    13 |    0 |     0 |     1 |    0 | A               | intragenic_variant | MODIFIER        | gatC          | b2092           | gene_variant      | b2092              | nan              |            -1 | n.2173363_2173364delCC | nan             |                -1 |                -1 |               -1 |               -1 |              -1 |              -1 |                 0 | nan                               |
-| NC_000913.3 | 3535147 | A     | C     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | C               | missense_variant   | MODERATE        | envZ          | b3404           | transcript        | b3404              | protein_coding   |             1 | c.722T>G               | p.Val241Gly     |               722 |              1353 |              722 |             1353 |             241 |             450 |                 0 | nan                               |
-| NC_000913.3 | 3560455 | C     | CG    |  nan | PASS     |     9 |    0 |     0 |     1 |    0 | CG              | intragenic_variant | MODIFIER        | glpR          | b3423           | gene_variant      | b3423              | nan              |            -1 | n.3560455_3560456insG  | nan             |                -1 |                -1 |               -1 |               -1 |              -1 |              -1 |                 0 | nan                               |
-| NC_000913.3 | 4296380 | A     | ACG   |  nan | PASS     |    10 |    0 |     0 |     1 |    0 | ACG             | intergenic_region  | MODIFIER        | gltP-yjcO     | b4077-b4078     | intergenic_region | b4077-b4078        | nan              |            -1 | n.4296380_4296381insCG | nan             |                -1 |                -1 |               -1 |               -1 |              -1 |              -1 |                 0 | nan                               |
-| NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript        | b4161              | protein_coding   |             1 | c.756C>A               | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
+| CHROM       |     POS | REF   | ALT   |   ID | FILTER   |   ADP |   WT |   HET |   HOM |   NC | ANN[*].ALLELE   | ANN[*].EFFECT      | ANN[*].IMPACT   | ANN[*].GENE   | ANN[*].GENEID   | ANN[*].FEATURE   | ANN[*].FEATUREID   | ANN[*].BIOTYPE   |   ANN[*].RANK | ANN[*].HGVS_C   | ANN[*].HGVS_P   |   ANN[*].CDNA_POS |   ANN[*].CDNA_LEN |   ANN[*].CDS_POS |   ANN[*].CDS_LEN |   ANN[*].AA_POS |   ANN[*].AA_LEN |   ANN[*].DISTANCE | ANN[*].ERRORS                     |
+|-------------|---------|-------|-------|------|----------|-------|------|-------|-------|------|-----------------|--------------------|-----------------|---------------|-----------------|------------------|--------------------|------------------|---------------|-----------------|-----------------|-------------------|-------------------|------------------|------------------|-----------------|-----------------|-------------------|-----------------------------------|
+| NC_000913.3 |   93043 | C     | G     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | G               | missense_variant   | MODERATE        | ftsI          | b0084           | transcript       | b0084              | protein_coding   |             1 | c.1631C>G       | p.Ala544Gly     |              1631 |              1767 |             1631 |             1767 |             544 |             588 |                 0 | nan                               |
+| NC_000913.3 |  482698 | T     | A     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | A               | missense_variant   | MODERATE        | acrB          | b0462           | transcript       | b0462              | protein_coding   |             1 | c.1706A>T       | p.Gln569Leu     |              1706 |              3150 |             1706 |             3150 |             569 |            1049 |                 0 | nan                               |
+| NC_000913.3 |  852762 | A     | G     |  nan | PASS     |    14 |    0 |     0 |     1 |    0 | G               | intragenic_variant | MODIFIER        | rybA          | b4416           | gene_variant     | b4416              | nan              |            -1 | n.852762A>G     | nan             |                -1 |                -1 |               -1 |               -1 |              -1 |              -1 |                 0 | nan                               |
+| NC_000913.3 | 1905761 | G     | A     |  nan | PASS     |    13 |    0 |     0 |     1 |    0 | A               | missense_variant   | MODERATE        | mntP          | b1821           | transcript       | b1821              | protein_coding   |             1 | c.74G>A         | p.Gly25Asp      |                74 |               567 |               74 |              567 |              25 |             188 |                 0 | nan                               |
+| NC_000913.3 | 3535147 | A     | C     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | C               | missense_variant   | MODERATE        | envZ          | b3404           | transcript       | b3404              | protein_coding   |             1 | c.722T>G        | p.Val241Gly     |               722 |              1353 |              722 |             1353 |             241 |             450 |                 0 | nan                               |
+| NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
+
+
+# Project tree
+```bash
+[ 736]  .
+├── [ 13K]  README.md
+├── [9.9K]  VarScan_results_annotated.tsv
+├── [3.7K]  VarScan_results_annotated_main.md
+├── [1.3K]  VarScan_results_annotated_main.tsv
+├── [ 384]  alignments
+│   ├── [ 87M]  alignment.bam
+│   ├── [249M]  alignment.sam
+│   ├── [ 67M]  alignment_sorted.bam
+│   ├── [ 14K]  alignment_sorted.bam.bai
+│   ├── [ 11K]  bwa_mem.log
+│   ├── [   0]  samtools_flagstat.log
+│   ├── [ 503]  samtools_flagstat.txt
+│   ├── [   0]  samtools_index.log
+│   ├── [   0]  samtools_sam_to_bam.log
+│   └── [   0]  samtools_sort.log
+├── [  96]  data
+│   └── [ 256]  k12
+│       ├── [3.3M]  GCF_000005845.2_ASM584v2_genomic.gbff.gz
+│       ├── [ 11M]  genes.gbk
+│       ├── [1.2M]  sequence.NC_000913.3.bin
+│       ├── [1.5M]  snpEffectPredictor.bin
+│       ├── [2.7K]  snpeff_build.log
+│       └── [8.6K]  snpeff_build.txt
+├── [1.8K]  environment.yml
+├── [ 128]  mpileup
+│   ├── [  37]  mpileup.log
+│   └── [253M]  my.mpileup
+├── [   0]  project_tree.txt
+├── [ 320]  reads
+│   ├── [ 85M]  10006541.zip
+│   ├── [ 42M]  amp_res_1.fastq.gz
+│   ├── [ 42M]  amp_res_2.fastq.gz
+│   ├── [ 192]  fastqc
+│   │   ├── [753K]  amp_res_1_fastqc.html
+│   │   ├── [657K]  amp_res_1_fastqc.zip
+│   │   ├── [754K]  amp_res_2_fastqc.html
+│   │   └── [658K]  amp_res_2_fastqc.zip
+│   ├── [  18]  reads_wc_stats.txt
+│   ├── [ 470]  seqsit_stats_output.md
+│   ├── [ 352]  seqsit_stats_output.txt
+│   └── [ 416]  trimmed
+│       ├── [ 27M]  amp_res_1.fastq_1.2P.gz
+│       ├── [1.9M]  amp_res_1.fastq_1.2U.gz
+│       ├── [ 38M]  amp_res_1.fastq_1P.gz
+│       ├── [730K]  amp_res_1.fastq_1U.gz
+│       ├── [ 28M]  amp_res_2.fastq_1.2P.gz
+│       ├── [1.7M]  amp_res_2.fastq_1.2U.gz
+│       ├── [ 38M]  amp_res_2.fastq_1P.gz
+│       ├── [ 42K]  amp_res_2.fastq_1U.gz
+│       ├── [ 320]  fastqc
+│       │   ├── [766K]  amp_res_1.fastq_1.2P_fastqc.html
+│       │   ├── [641K]  amp_res_1.fastq_1.2P_fastqc.zip
+│       │   ├── [781K]  amp_res_1.fastq_1P_fastqc.html
+│       │   ├── [652K]  amp_res_1.fastq_1P_fastqc.zip
+│       │   ├── [767K]  amp_res_2.fastq_1.2P_fastqc.html
+│       │   ├── [637K]  amp_res_2.fastq_1.2P_fastqc.zip
+│       │   ├── [777K]  amp_res_2.fastq_1P_fastqc.html
+│       │   └── [642K]  amp_res_2.fastq_1P_fastqc.zip
+│       ├── [ 16K]  trimmomatic.log
+│       └── [ 16K]  trimmomatic_2.log
+├── [ 384]  refs
+│   ├── [4.5M]  GCF_000005845.2_ASM584v2_genomic.fna
+│   ├── [  29]  GCF_000005845.2_ASM584v2_genomic.fna.fai
+│   ├── [1.3M]  GCF_000005845.2_ASM584v2_genomic.fna.gz
+│   ├── [  12]  GCF_000005845.2_ASM584v2_genomic.fna.gz.amb
+│   ├── [  98]  GCF_000005845.2_ASM584v2_genomic.fna.gz.ann
+│   ├── [4.4M]  GCF_000005845.2_ASM584v2_genomic.fna.gz.bwt
+│   ├── [1.1M]  GCF_000005845.2_ASM584v2_genomic.fna.gz.pac
+│   ├── [2.2M]  GCF_000005845.2_ASM584v2_genomic.fna.gz.sa
+│   ├── [397K]  GCF_000005845.2_ASM584v2_genomic.gff.gz
+│   └── [184K]  NexteraPE-PE.fa
+├── [3.4K]  run.sh
+├── [ 128]  scripts
+│   ├── [ 125]  tsv2md.py
+│   └── [1.6K]  vcfEffOnePerLine.pl
+├── [ 828]  setup.sh
+├── [  23]  snpEff.config
+├── [3.0K]  snpEff_genes.txt
+├── [ 28K]  snpEff_summary.html
+└── [ 160]  vcf
+    ├── [ 373]  VarScan_results.log
+    ├── [3.0K]  VarScan_results.vcf
+    └── [ 10K]  VarScan_results_annotated.vcf
+
+12 directories, 72 files
+
+```
