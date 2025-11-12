@@ -7,20 +7,20 @@ mamba env create -f environment.yml -n practicum_project_1
 ```
 
 # 1. Where to get the data.  
-## <span style="color:green">Automatic/semi-automatic installation of all components:</span>  
+## <span style="color:#57ab5a">Automatic/semi-automatic installation of all components:</span>  
  - Run **setup.sh** file.
  ```bash
     sh setup.sh
 ```
- - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. <span style="color:red">**After that, return to the main project directory.**</span>  
+ - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. <span style="color:#e5534b">**After that, return to the main project directory.**</span>  
 
-## <span style="color:green">Now you can run the **run.sh** file for automatic script execution.</span>
+## <span style="color:#57ab5a">Now you can run the **run.sh** file for automatic script execution.</span>
 ```bash
 sh run.sh
 ```
 
 ## All subsequent commands will be executed individually
-## <span style="color:orange">(if you ran run.sh, you don't need to execute them).</span>  
+## <span style="color:#e3b341">(if you ran run.sh, you don't need to execute them).</span>  
 
 # 2. Inspect raw sequencing data manually.  
 <details> 
