@@ -1,22 +1,23 @@
 # Prerequisites
 ### To install all dependencies, you must have [Mamba](https://github.com/conda-forge/miniforge) installed on your system.  
 
-🟢 **Create the environment with the following command:**
+🟢 **Create the environment with the following command and activate it:**
 ```bash
 mamba env create -f environment.yml -n practicum_project_1
+mamba activate practicum_project_1
 ```  
 
 # 1. Where to get the data.
 🟢 **Automatic/semi-automatic installation of all components:**  
  - Run **setup.sh** file.  
  ```bash
-    sh setup.sh  
+sh setup.sh
 ```  
  - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. ⚠️ **After that, return to the main project directory.**  
 
 # 🟢 Now you can run the **run.sh** file for automatic commands execution.  
 ```bash
-sh run.sh  
+sh run.sh
 ```  
 
 # 🟡 All subsequent commands will be executed individually.  
@@ -27,11 +28,11 @@ sh run.sh
 <summary>Show code</summary>
 
 ```bash
-gunzip -c reads/amp_res_1.fastq.gz | wc -l  
-gunzip -c reads/amp_res_2.fastq.gz | wc -l   
+gunzip -c reads/amp_res_1.fastq.gz | wc -l
+gunzip -c reads/amp_res_2.fastq.gz | wc -l
 
-seqkit stats reads/amp_res_1.fastq.gz > seqsit_stats_output.txt  
-seqkit stats reads/amp_res_2.fastq.gz >> seqsit_stats_output.txt  
+seqkit stats reads/amp_res_1.fastq.gz > reads/seqsit_stats_output.txt
+seqkit stats reads/amp_res_2.fastq.gz >> reads/seqsit_stats_output.txt
 ```
 </details>
 
@@ -45,7 +46,7 @@ seqkit stats reads/amp_res_2.fastq.gz >> seqsit_stats_output.txt
 <summary>Show code</summary>
 
 ``` bash
-fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz  
+fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 ```
 </details>
 
@@ -87,7 +88,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimm
 <summary>Show code</summary>
 
 ```bash
-trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log 
+trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_1.fastq_1.2U.gz reads/trimmed/amp_res_2.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:30 TRAILING:30 SLIDINGWINDOW:10:30 MINLEN:20 2> reads/trimmed/trimmomatic_2.log
 fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1.2P.gz reads/trimmed/amp_res_2.fastq_1.2P.gz
 ```
 </details>
@@ -133,7 +134,7 @@ bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fas
 <summary>Show code</summary>
 
 ```bash
- samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log  
+ samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log
  samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log
 ```
 </details>
@@ -148,7 +149,7 @@ bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fas
 <summary>Show code</summary>  
 
 ```bash
-samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log  
+samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log
 samtools index alignments/alignment_sorted.bam 2> alignments/samtools_index.log
 ```
 
@@ -163,7 +164,7 @@ gunzip -c refs/GCF_000005845.2_ASM584v2_genomic.fna.gz > refs/GCF_000005845.2_AS
 <summary>Show code</summary> 
 
 ```bash
-samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log    
+samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log
 varscan mpileup2snp mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
 ```
 </details>    

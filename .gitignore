@@ -10,4 +10,6 @@ snpEff_genes.txt
 snpEff_summary.html
 snpEff.config
 .DS_Store
+VarScan_results_annotated.tsv
+VarScan_results_annotated_main.tsv
 VarScan_results_annotated_main.md
