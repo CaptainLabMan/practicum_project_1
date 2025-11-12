@@ -20,7 +20,7 @@ sh run.sh
 ```  
 
 # 🟡 All subsequent commands will be executed individually.  
-⚠️ **(if you ran run.sh, you don't need to execute them).**  
+⚠️ **if you ran run.sh, you don't need to execute them.**  
 
 # 2. Inspect raw sequencing data manually.  
 <details> 
