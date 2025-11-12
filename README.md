@@ -213,6 +213,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 ```
 </details> 
 
+# Result variants table
 | CHROM       |     POS | REF   | ALT   |   ID | FILTER   |   ADP |   WT |   HET |   HOM |   NC | ANN[*].ALLELE   | ANN[*].EFFECT      | ANN[*].IMPACT   | ANN[*].GENE   | ANN[*].GENEID   | ANN[*].FEATURE    | ANN[*].FEATUREID   | ANN[*].BIOTYPE   |   ANN[*].RANK | ANN[*].HGVS_C          | ANN[*].HGVS_P   |   ANN[*].CDNA_POS |   ANN[*].CDNA_LEN |   ANN[*].CDS_POS |   ANN[*].CDS_LEN |   ANN[*].AA_POS |   ANN[*].AA_LEN |   ANN[*].DISTANCE | ANN[*].ERRORS                     |
 |-------------|---------|-------|-------|------|----------|-------|------|-------|-------|------|-----------------|--------------------|-----------------|---------------|-----------------|-------------------|--------------------|------------------|---------------|------------------------|-----------------|-------------------|-------------------|------------------|------------------|-----------------|-----------------|-------------------|-----------------------------------|
 | NC_000913.3 |   93043 | C     | G     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | G               | missense_variant   | MODERATE        | ftsI          | b0084           | transcript        | b0084              | protein_coding   |             1 | c.1631C>G              | p.Ala544Gly     |              1631 |              1767 |             1631 |             1767 |             544 |             588 |                 0 | nan                               |
