@@ -1,7 +1,12 @@
 alignments
 data
 mpileup
-reads
+reads/*.gz
+reads/*.zip
+reads/fastqc/*.zip
+reads/trimmed/*.gz
+reads/trimmed/*.log
+reads/trimmed/fastqc/*.zip
 refs
 scripts
 vcf

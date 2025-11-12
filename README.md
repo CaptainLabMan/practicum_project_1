@@ -1,62 +1,73 @@
 # Prerequisites
 ### To install all dependencies, you must have [Mamba](https://github.com/conda-forge/miniforge) installed on your system.  
 
-Create the environment with the following command:
+🟢 **Create the environment with the following command:**
 ```bash
 mamba env create -f environment.yml -n practicum_project_1
-```
+```  
 
-# 1. Where to get the data.  
-## <span style="color:#57ab5a">Automatic/semi-automatic installation of all components:</span>  
- - Run **setup.sh** file.
+# 1. Where to get the data.
+🟢 **Automatic/semi-automatic installation of all components:**  
+ - Run **setup.sh** file.  
  ```bash
-    sh setup.sh
-```
- - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. <span style="color:#e5534b">**After that, return to the main project directory.**</span>  
+    sh setup.sh  
+```  
+ - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. ⚠️ **After that, return to the main project directory.**  
 
-## <span style="color:#57ab5a">Now you can run the **run.sh** file for automatic script execution.</span>
+# 🟢 Now you can run the **run.sh** file for automatic commands execution.  
 ```bash
-sh run.sh
-```
+sh run.sh  
+```  
 
-## All subsequent commands will be executed individually
-## <span style="color:#e3b341">(if you ran run.sh, you don't need to execute them).</span>  
+# 🟡 All subsequent commands will be executed individually.  
+⚠️ **(if you ran run.sh, you don't need to execute them).**  
 
 # 2. Inspect raw sequencing data manually.  
+<details> 
+<summary>Show code</summary>
+</details>
+
 <details> 
 <summary>Show code</summary>
 
 ```bash
 gunzip -c reads/amp_res_1.fastq.gz | wc -l  
 gunzip -c reads/amp_res_2.fastq.gz | wc -l   
-```
-</details>
 
- - amp_res_1.fastq.gz - 1823504  
- - amp_res_2.fastq.gz - 1823504  
-
-```bash
-mamba install -c bioconda seqkit  
 seqkit stats reads/amp_res_1.fastq.gz > seqsit_stats_output.txt  
 seqkit stats reads/amp_res_2.fastq.gz >> seqsit_stats_output.txt  
 ```
+</details>
+
+🤔 **Task:** *From the line count, use what you know about the fastq format to calculate the number of reads in each file, and record in your lab notebook.*  
+✅ **Answer.** Reads count. (To get the number of reads, you should to dovode these numbers by 4.):  
+ - amp_res_1.fastq.gz - 1823504  
+ - amp_res_2.fastq.gz - 1823504  
 
 # 3. Inspect raw sequencing data with FastQC. Filtering the reads.  
+<details> 
+<summary>Show code</summary>
+
 ``` bash
-mamba install bioconda::fastqc  
 fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz  
 ```
+</details>
 
-*Do the basic statistics match what you calculated for the number of reads last time?*
-- Yes  
+🤔 **Task:** *Do the basic statistics match what you calculated for the number of reads last time?*  
+✅ **Answer:** Yes  
 
-*On the left, you’ll see a navigation window with green (normal), yellow (slightly abnormal), and red (very unusual) circles for several kinds of data analysis. If you have any red circles, record them in your notebook:*  
+🤔 **Task:** *On the left, you’ll see a navigation window with green (normal), yellow (slightly abnormal), and red (very unusual) circles for several kinds of data analysis. If you have any red circles, record them in your notebook:*  
+✅ **Answer:**  
  - amp_res_1.fastq.gz: Per base sequence quality, Per tile sequence quality  
  - amp_res_2.fastq.gz: Per base sequence quality  
 
-*Mention the QC results in your lab report. What do you think we should do about anything FastQC identified as unusual?*  
-**FastQC results:**  
-1. ???????????
+🤔 **Task:** *Mention the QC results in your lab report.*  
+✅ **Answer. FastQC results:**  
+- [amp_res_1_fastqc.html](./reads/fastqc/amp_res_1_fastqc.html)  
+- [amp_res_2_fastqc.html](./reads/fastqc/amp_res_2_fastqc.html)  
+
+🤔 **Task:** *What do you think we should do about anything FastQC identified as unusual?*  
+✅ **Answer.**
 
 # 4. (Optional, 1 bonus point) Filtering the reads. 
 ```bash 
