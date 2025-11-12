@@ -41,6 +41,13 @@ seqkit stats reads/amp_res_2.fastq.gz >> reads/seqsit_stats_output.txt
  - amp_res_1.fastq.gz - 1823504  
  - amp_res_2.fastq.gz - 1823504  
 
+**Seqkit output**
+| file                      format  type  num_seqs     sum_len  min_len  avg_len  max_len   |
+|-------------------------------------------------------------------------------------------|
+| reads/amp_res_1.fastq.gz  FASTQ   DNA    455,876  46,043,476      101      101      101   |
+| reads/amp_res_2.fastq.gz  FASTQ   DNA    455,876  46,043,476      101      101      101   |
+
+
 # 3. Inspect raw sequencing data with FastQC. Filtering the reads.  
 <details> 
 <summary>Show code</summary>
@@ -221,7 +228,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 | NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
 
 
-# Project tree
+# Project's tree
 ```bash
 [ 736]  .
 ├── [ 13K]  README.md
