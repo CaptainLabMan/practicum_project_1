@@ -226,8 +226,8 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 <summary>Show tree</summary> 
 
 ```bash
-[ 736]  .
-├── [ 13K]  README.md
+[ 864]  .
+├── [ 16K]  README.md
 ├── [9.9K]  VarScan_results_annotated.tsv
 ├── [3.7K]  VarScan_results_annotated_main.md
 ├── [1.3K]  VarScan_results_annotated_main.tsv
@@ -250,12 +250,42 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 │       ├── [1.5M]  snpEffectPredictor.bin
 │       ├── [2.7K]  snpeff_build.log
 │       └── [8.6K]  snpeff_build.txt
-├── [1.8K]  environment.yml
+├── [4.6K]  environment.yml
 ├── [ 128]  mpileup
 │   ├── [  37]  mpileup.log
 │   └── [253M]  my.mpileup
+├── [ 411]  multiqc.log
+├── [   0]  multiqc.txt
+├── [ 896]  multiqc_data
+│   ├── [ 350]  fastqc-status-check-heatmap.txt
+│   ├── [2.3K]  fastqc_adapter_content_plot.txt
+│   ├── [2.5K]  fastqc_per_base_n_content_plot.txt
+│   ├── [2.8K]  fastqc_per_base_sequence_quality_plot.txt
+│   ├── [3.0K]  fastqc_per_sequence_gc_content_plot_Counts.txt
+│   ├── [5.2K]  fastqc_per_sequence_gc_content_plot_Percentages.txt
+│   ├── [1.2K]  fastqc_per_sequence_quality_scores_plot.txt
+│   ├── [  90]  fastqc_sequence_counts_plot.txt
+│   ├── [ 767]  fastqc_sequence_duplication_levels_plot.txt
+│   ├── [ 36K]  llms-full.txt
+│   ├── [ 18K]  multiqc.log
+│   ├── [1.6M]  multiqc.parquet
+│   ├── [ 313]  multiqc_citations.txt
+│   ├── [521K]  multiqc_data.json
+│   ├── [ 833]  multiqc_fastqc.txt
+│   ├── [ 786]  multiqc_general_stats.txt
+│   ├── [ 923]  multiqc_samtools_flagstat.txt
+│   ├── [  28]  multiqc_software_versions.txt
+│   ├── [ 747]  multiqc_sources.txt
+│   ├── [ 239]  multiqc_trimmomatic.txt
+│   ├── [ 331]  multiqc_varscan2_summary.txt
+│   ├── [ 346]  samtools-flagstat-pct-table.txt
+│   ├── [ 306]  samtools-flagstat-table.txt
+│   ├── [ 118]  trimmomatic_plot.txt
+│   ├── [  54]  varscan2_variant_counts_plot_INDELs.txt
+│   └── [  50]  varscan2_variant_counts_plot_SNPs.txt
+├── [2.3M]  multiqc_report.html
 ├── [   0]  project_tree.txt
-├── [ 320]  reads
+├── [ 288]  reads
 │   ├── [ 85M]  10006541.zip
 │   ├── [ 42M]  amp_res_1.fastq.gz
 │   ├── [ 42M]  amp_res_2.fastq.gz
@@ -265,7 +295,6 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 │   │   ├── [754K]  amp_res_2_fastqc.html
 │   │   └── [658K]  amp_res_2_fastqc.zip
 │   ├── [  18]  reads_wc_stats.txt
-│   ├── [ 470]  seqsit_stats_output.md
 │   ├── [ 352]  seqsit_stats_output.txt
 │   └── [ 416]  trimmed
 │       ├── [ 27M]  amp_res_1.fastq_1.2P.gz
@@ -311,6 +340,6 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
     ├── [3.0K]  VarScan_results.vcf
     └── [ 10K]  VarScan_results_annotated.vcf
 
-12 directories, 72 files
+13 directories, 100 files
 ```
 </details> 
