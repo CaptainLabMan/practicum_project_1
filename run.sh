@@ -45,3 +45,4 @@ cat vcf/VarScan_results_annotated.vcf | ./scripts/vcfEffOnePerLine.pl | snpsift 
 awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results_annotated_main.tsv
 python3 scripts/tsv2md.py VarScan_results_annotated_main.tsv > VarScan_results_annotated_main.md
 python3 scripts/tsv2md.py reads/seqsit_stats_output.txt > reads/seqsit_stats_output.md
+tree -h > project_tree.txt
