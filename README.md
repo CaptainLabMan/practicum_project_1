@@ -59,7 +59,8 @@ fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 > amp_res_2.fastq.gz: Per base sequence quality  
 
 🤔 **Task:** *Mention the QC results in your lab report.*  
-✅ **Answer. FastQC results:**  
+✅ **Answer.**  
+**FastQC results:**  
 > **Per base sequence quality:**  
 >> The FastQC analysis revealed a decrease in read quality towards the end of both forward and reverse reads.
 
