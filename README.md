@@ -154,7 +154,7 @@ bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fas
 
 ```bash
 samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> alignments/samtools_sort.log  
-samtools index alignments/alignment_sorted.bam  2> alignments/samtools_index.log
+samtools index alignments/alignment_sorted.bam 2> alignments/samtools_index.log
 ```
 
 We should unzip ref.fasta for IGV:
@@ -168,8 +168,7 @@ gunzip -c refs/GCF_000005845.2_ASM584v2_genomic.fna.gz > refs/GCF_000005845.2_AS
 <summary>Show code</summary> 
 
 ```bash
-samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log  
-mamba install bioconda::varscan  
+samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log    
 varscan mpileup2cns mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
 ```
 </details>    
@@ -209,5 +208,7 @@ cat vcf/VarScan_results_annotated.vcf | ./scripts/vcfEffOnePerLine.pl | snpsift 
 "ANN[*].DISTANCE" \
 "ANN[*].ERRORS" \
 > VarScan_results_annotated.tsv
+
+awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results_annotated_main.tsv
 ```
 </details> 
