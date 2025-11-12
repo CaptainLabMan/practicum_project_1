@@ -3,7 +3,7 @@ data
 mpileup
 reads
 refs
-scripts
+scripts/vcfEffOnePerLine.pl
 vcf
 seqsit_stats_output.txt
 snpEff_genes.txt

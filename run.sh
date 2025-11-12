@@ -1,7 +1,7 @@
-gunzip -c reads/amp_res_1.fastq.gz | wc -l  
-gunzip -c reads/amp_res_2.fastq.gz | wc -l   
-seqkit stats reads/amp_res_1.fastq.gz > seqsit_stats_output.txt  
-seqkit stats reads/amp_res_2.fastq.gz >> seqsit_stats_output.txt  
+gunzip -c reads/amp_res_1.fastq.gz | wc -l > reads/reads_wc_stats.txt
+gunzip -c reads/amp_res_2.fastq.gz | wc -l >> reads/reads_wc_stats.txt
+seqkit stats reads/amp_res_1.fastq.gz > reads/seqsit_stats_output.txt  
+seqkit stats reads/amp_res_2.fastq.gz >> reads/seqsit_stats_output.txt  
 fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz  
 trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_1.fastq_1U.gz reads/trimmed/amp_res_2.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1U.gz ILLUMINACLIP:refs/NexteraPE-PE.fa:2:30:10:2:True LEADING:20 TRAILING:20 SLIDINGWINDOW:10:20 MINLEN:20 2> reads/trimmed/trimmomatic.log
 fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.fastq_1P.gz reads/trimmed/amp_res_2.fastq_1P.gz
@@ -15,7 +15,7 @@ samtools sort alignments/alignment.bam -o alignments/alignment_sorted.bam 2> ali
 samtools index alignments/alignment_sorted.bam 2> alignments/samtools_index.log
 gunzip -c refs/GCF_000005845.2_ASM584v2_genomic.fna.gz > refs/GCF_000005845.2_ASM584v2_genomic.fna
 samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log
-varscan mpileup2cns mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
+varscan mpileup2snp mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
 touch snpEff.config
 echo "k12.genome : ecoli_K12" > snpEff.config
 gunzip -c data/k12/GCF_000005845.2_ASM584v2_genomic.gbff.gz > data/k12/genes.gbk
@@ -44,3 +44,4 @@ cat vcf/VarScan_results_annotated.vcf | ./scripts/vcfEffOnePerLine.pl | snpsift 
 > VarScan_results_annotated.tsv
 awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results_annotated_main.tsv
 python3 scripts/tsv2md.py VarScan_results_annotated_main.tsv > VarScan_results_annotated_main.md
+python3 scripts/tsv2md.py reads/seqsit_stats_output.txt > reads/seqsit_stats_output.md
