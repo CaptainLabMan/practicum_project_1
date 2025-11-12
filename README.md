@@ -63,11 +63,15 @@ fastqc -o ./reads/fastqc reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz
 
 🤔 **Task:** *Mention the QC results in your lab report.*  
 ✅ **Answer. FastQC results:**  
-- [amp_res_1_fastqc.html](./reads/fastqc/amp_res_1_fastqc.html)  
-- [amp_res_2_fastqc.html](./reads/fastqc/amp_res_2_fastqc.html)  
+> **Per base sequence quality:**  
+>> The FastQC analysis revealed a decrease in read quality towards the end of both forward and reverse reads.
+
+> **Per tile sequence quality:**  
+>> A significant drop in quality was detected for forward reads in specific tiles of the flow cell (red and yellow areas). Reverse reads also showed regions of reduced quality, but the result is acceptable. Overall, the general result remains acceptable due to the limited and localized nature of these deviations. These issues may have been caused by the presence of a bubble or edge effects in the flow cell.
 
 🤔 **Task:** *What do you think we should do about anything FastQC identified as unusual?*  
-✅ **Answer.**
+✅ **Answer:**
+> It depends on the results. In this case, we can remove reads or their parts that do not meet the quality criteria.
 
 # 4. (Optional, 1 bonus point) Filtering the reads. 
 ```bash 
