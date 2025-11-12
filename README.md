@@ -1,15 +1,37 @@
+# Prerequisites
+### To install all dependencies, you must have [Mamba](https://github.com/conda-forge/miniforge) installed on your system.  
+
+Create the environment with the following command:
+```bash
 mamba env create -f environment.yml -n practicum_project_1
+```
 
 # 1. Where to get the data.  
-Выполнить setup.sh  
-Скачать вручную риды по [ссылке](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3)  
-Переместить в папку reads, перейти в папку, выполнить команду reads/10006541.zip  
+## <span style="color:green">Automatic/semi-automatic installation of all components:</span>  
+ - Run **setup.sh** file.
+ ```bash
+    sh setup.sh
+```
+ - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. <span style="color:red">**After that, return to the main project directory.**</span>  
 
-# Inspect raw sequencing data manually.  
+## <span style="color:green">Now you can run the **run.sh** file for automatic script execution.</span>
+```bash
+sh run.sh
+```
+
+## All subsequent commands will be executed individually
+## <span style="color:orange">(if you ran run.sh, you don't need to execute them).</span>  
+
+# 2. Inspect raw sequencing data manually.  
+<details> 
+<summary>Show code</summary>
+
 ```bash
 gunzip -c reads/amp_res_1.fastq.gz | wc -l  
 gunzip -c reads/amp_res_2.fastq.gz | wc -l   
 ```
+</details>
+
  - amp_res_1.fastq.gz - 1823504  
  - amp_res_2.fastq.gz - 1823504  
 
@@ -85,9 +107,9 @@ bwa mem refs/GCF_000005845.2_ASM584v2_genomic.fna.gz reads/trimmed/amp_res_1.fas
 
 ## 5.3. Compress SAM file
 ```bash
-mamba install bioconda::samtools  
-samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log  
-samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log
+ mamba install bioconda::samtools  
+ samtools view -Sb alignments/alignment.sam > alignments/alignment.bam 2> alignments/samtools_sam_to_bam.log  
+ samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2> alignments/samtools_flagstat.log
 ```  
 
 *What percentage of reads are mapped?*  
@@ -107,9 +129,9 @@ samtools flagstat alignments/alignment.bam > alignments/samtools_flagstat.txt 2>
 
  #  6. Variant calling
  ```bash
- samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log  
- mamba install bioconda::varscan  
- varscan mpileup2cns mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
+  samtools mpileup -f refs/GCF_000005845.2_ASM584v2_genomic.fna alignments/alignment_sorted.bam > mpileup/my.mpileup 2> mpileup/mpileup.log  
+  mamba install bioconda::varscan  
+  varscan mpileup2cns mpileup/my.mpileup --min-var-freq 0.8 --variants --output-vcf 1 > vcf/VarScan_results.vcf 2> vcf/VarScan_results.log
  ```  
 
  # 7. Variant effect prediction
