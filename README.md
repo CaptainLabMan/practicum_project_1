@@ -344,8 +344,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 | NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
 
 
-## dsds
-### dwdwq
+## 📊 QC results
 ![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)
 ![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
 ![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
