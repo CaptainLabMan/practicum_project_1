@@ -9,8 +9,8 @@ mamba activate practicum_project_1
 
 # 1. Where to get the data.
 🟢 **Automatic installation of all components:**  
- - Run **setup.sh** file.  
- ```bash
+> Run **setup.sh** file.  
+```bash
 sh setup.sh
 ```  
 
@@ -342,3 +342,10 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 | NC_000913.3 | 1905761 | G     | A     |  nan | PASS     |    13 |    0 |     0 |     1 |    0 | A               | missense_variant   | MODERATE        | mntP          | b1821           | transcript       | b1821              | protein_coding   |             1 | c.74G>A         | p.Gly25Asp      |                74 |               567 |               74 |              567 |              25 |             188 |                 0 | nan                               |
 | NC_000913.3 | 3535147 | A     | C     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | C               | missense_variant   | MODERATE        | envZ          | b3404           | transcript       | b3404              | protein_coding   |             1 | c.722T>G        | p.Val241Gly     |               722 |              1353 |              722 |             1353 |             241 |             450 |                 0 | nan                               |
 | NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
+
+
+## dsds
+### dwdwq
+![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)
+![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
+![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
