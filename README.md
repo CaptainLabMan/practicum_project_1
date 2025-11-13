@@ -285,8 +285,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 │   └── [  50]  varscan2_variant_counts_plot_SNPs.txt
 ├── [2.4M]  multiqc_report.html
 ├── [   0]  project_tree.txt
-├── [ 288]  reads
-│   ├── [ 85M]  10006541.zip
+├── [ 256]  reads
 │   ├── [ 42M]  amp_res_1.fastq.gz
 │   ├── [ 42M]  amp_res_2.fastq.gz
 │   ├── [ 192]  fastqc
@@ -331,7 +330,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 ├── [ 128]  scripts
 │   ├── [ 125]  tsv2md.py
 │   └── [1.6K]  vcfEffOnePerLine.pl
-├── [ 828]  setup.sh
+├── [1018]  setup.sh
 ├── [  23]  snpEff.config
 ├── [3.0K]  snpEff_genes.txt
 ├── [ 28K]  snpEff_summary.html
@@ -340,6 +339,6 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
     ├── [3.0K]  VarScan_results.vcf
     └── [ 10K]  VarScan_results_annotated.vcf
 
-13 directories, 101 files
+13 directories, 100 files
 ```
 </details> 
