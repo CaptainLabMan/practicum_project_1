@@ -8,12 +8,11 @@ mamba activate practicum_project_1
 ```  
 
 # 1. Where to get the data.
-🟢 **Automatic/semi-automatic installation of all components:**  
+🟢 **Automatic installation of all components:**  
  - Run **setup.sh** file.  
  ```bash
 sh setup.sh
 ```  
- - Donwload [**reads**](https://figshare.com/articles/dataset/amp_res_2_fastq_zip/10006541/3) manually ("Download all ..." button) and move them to the **/reads** directory, navigate to the folder and run the **unzip 10006541.zip** command. ⚠️ **After that, return to the main project directory.**  
 
 # 🟢 Now you can run the **run.sh** file for automatic commands execution.  
 ```bash
