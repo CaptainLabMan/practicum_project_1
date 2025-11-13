@@ -116,11 +116,21 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.2P.fastq.gz reads/trimm
 > *A comparative analysis of samples before trimming, after trimming with quality = 20, and after trimming with quality = 30 demonstrates an overall improvement in read quality with increasing quality cutoff during trimming (**Plot 1:** the top two lines represent reads with quality cutoff 30, below them with quality cutoff 20, and the bottom ones before trimming).*  
 > *However, as the read quality increases, their quantity decreases, as seen in **Plot 2**. We believe that a quality cutoff of 30 is excessive, as it does not lead to a substantial improvement in quality but results in a significant reduction in the number of reads. We would recommend using a quality cutoff of 20.*  
 ![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
-![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)  
+<center>
+Plot 1
+</center>
+
+![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)
+<center>
+Plot 2  
+</center>  
 
 > *Desctiption:*
-> *Adapter trimming was also performed, which reduced their quantity by approximately 6-8 times, from just over 4% to about 0.5% (**plot 3**).*
+> *Adapter trimming was also performed, which reduced their quantity by approximately 6-8 times, from just over 4% to about 0.5% (**Plot 3**).*
 ![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
+<center>
+Plot 3
+</center>
 
 # 5 . Aligning sequences to reference
 ## 5.1 Index the reference file 
