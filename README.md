@@ -80,7 +80,8 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1P.fastq.gz reads/trimmed
 ```  
 </details>
 
-📈 **Trimmomatic output:** Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
+📈 **Trimmomatic output:**  
+> (Qual=20): Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
 
 🤔 **Task:***What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
 
@@ -92,6 +93,9 @@ trimmomatic PE -phred33 reads/amp_res_1.fastq.gz reads/amp_res_2.fastq.gz reads/
 fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.2P.fastq.gz reads/trimmed/amp_res_2.2P.fastq.gz
 ```
 </details>
+
+📈 **Trimmomatic output:**  
+> (Qual=30): Input Read Pairs: 455876 Both Surviving: 363413 (79,72%) Forward Only Surviving: 33089 (7,26%) Reverse Only Surviving: 24416 (5,36%) Dropped: 34958 (7,67%)
 
 ✅ **Answer:**
 > **Total Sequences**
@@ -106,6 +110,17 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.2P.fastq.gz reads/trimm
 > **After trimming (qual=30):**
 >> amp_res_1.fastq_1.2P.gz - 363413  
 >> amp_res_2.fastq_1.2P.gz - 363413
+
+📊 **MultiQC output:**  
+> *Desctiption:*  
+> *A comparative analysis of samples before trimming, after trimming with quality = 20, and after trimming with quality = 30 demonstrates an overall improvement in read quality with increasing quality cutoff during trimming (**Plot 1:** the top two lines represent reads with quality cutoff 30, below them with quality cutoff 20, and the bottom ones before trimming).*  
+> *However, as the read quality increases, their quantity decreases, as seen in **Plot 2**. We believe that a quality cutoff of 30 is excessive, as it does not lead to a substantial improvement in quality but results in a significant reduction in the number of reads. We would recommend using a quality cutoff of 20.*  
+![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
+![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)  
+
+*Desctiption:*
+> *Adapter trimming was also performed, which reduced their quantity by approximately 6-8 times, from just over 4% to about 0.5% (**plot 3**).*
+![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
 
 # 5 . Aligning sequences to reference
 ## 5.1 Index the reference file 
@@ -343,8 +358,3 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 | NC_000913.3 | 3535147 | A     | C     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | C               | missense_variant   | MODERATE        | envZ          | b3404           | transcript       | b3404              | protein_coding   |             1 | c.722T>G        | p.Val241Gly     |               722 |              1353 |              722 |             1353 |             241 |             450 |                 0 | nan                               |
 | NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
 
-
-## 📊 QC results
-![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)
-![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
-![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
