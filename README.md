@@ -118,7 +118,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.2P.fastq.gz reads/trimm
 ![fastqc_per_base_sequence_quality_plot](plots/fastqc_per_base_sequence_quality_plot.png)
 ![fastqc_sequence_counts_plot](plots/fastqc_sequence_counts_plot.png)  
 
-*Desctiption:*
+> *Desctiption:*
 > *Adapter trimming was also performed, which reduced their quantity by approximately 6-8 times, from just over 4% to about 0.5% (**plot 3**).*
 ![fastqc_adapter_content_plot](plots/fastqc_adapter_content_plot.png)
 
