@@ -229,8 +229,8 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 <summary>Show tree</summary> 
 
 ```bash
-[ 864]  .
-├── [ 17K]  README.md
+[ 928]  .
+├── [ 23K]  README.md
 ├── [9.9K]  VarScan_results_annotated.tsv
 ├── [3.7K]  VarScan_results_annotated_main.md
 ├── [1.3K]  VarScan_results_annotated_main.tsv
@@ -254,6 +254,9 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 │       ├── [2.7K]  snpeff_build.log
 │       └── [8.6K]  snpeff_build.txt
 ├── [4.6K]  environment.yml
+├── [ 128]  images
+│   ├── [ 67K]  ab_resistance.jpg
+│   └── [436K]  ftsI.png
 ├── [ 128]  mpileup
 │   ├── [  37]  mpileup.log
 │   └── [253M]  my.mpileup
@@ -288,6 +291,10 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 │   ├── [  54]  varscan2_variant_counts_plot_INDELs.txt
 │   └── [  50]  varscan2_variant_counts_plot_SNPs.txt
 ├── [2.4M]  multiqc_report.html
+├── [ 160]  plots
+│   ├── [ 94K]  fastqc_adapter_content_plot.png
+│   ├── [131K]  fastqc_per_base_sequence_quality_plot.png
+│   └── [ 68K]  fastqc_sequence_counts_plot.png
 ├── [   0]  project_tree.txt
 ├── [ 256]  reads
 │   ├── [ 42M]  amp_res_1.fastq.gz
@@ -343,7 +350,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
     ├── [3.0K]  VarScan_results.vcf
     └── [ 10K]  VarScan_results_annotated.vcf
 
-13 directories, 100 files
+15 directories, 105 files
 ```
 </details>  
 
@@ -370,10 +377,10 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 > Based on the analysis of the three-dimensional structure, it can be concluded that amino acid residue 544 is situated in close proximity to both the active site and residue 307. This spatial configuration suggests a potential mechanism for reduced binding affinity of beta-lactam antibiotics, ultimately compromising their therapeutic effectiveness.  
 
 ### acrB:c.1706A>T (p.Gln569Leu)
-> The acrB gene encodes a component of the AcrAB-TolC efflux pump responsible for exporting various antibiotics including fluoroquinolones like ciprofloxacin, macrolides, tetracyclines, chloramphenicol, and some aminoglycosides. Both regulatory mutations increasing acrB expression and missense mutations enhancing pump functionality contribute significantly to multidrug resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [6](https://science-education.ru/article/view?id=30188), [7](https://pmc.ncbi.nlm.nih.gov/articles/PMC177656/), [8](https://microbiologyjournal.org/acrab-tolc-efflux-pump-mediated-resistance-to-carbapenems-among-clinical-isolates-of-enterobacteriaceae/), [9](https://pmc.ncbi.nlm.nih.gov/articles/PMC10315565/), [10](https://www.biorxiv.org/content/10.1101/2025.02.07.637019v1.full.pdf)). The pump expels antibiotics from the bacterial cell reducing intracellular antibiotic concentration.
+> The acrB gene encodes a component of the AcrAB-TolC efflux pump responsible for exporting various antibiotics including fluoroquinolones like ciprofloxacin, macrolides, tetracyclines, chloramphenicol, and some aminoglycosides. Both regulatory mutations increasing acrB expression and missense mutations enhancing pump functionality contribute significantly to multidrug resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [6](https://science-education.ru/article/view?id=30188), [7](https://pmc.ncbi.nlm.nih.gov/articles/PMC177656/), [8](https://microbiologyjournal.org/acrab-tolc-efflux-pump-mediated-resistance-to-carbapenems-among-clinical-isolates-of-enterobacteriaceae/), [9](https://pmc.ncbi.nlm.nih.gov/articles/PMC10315565/)). The pump expels antibiotics from the bacterial cell reducing intracellular antibiotic concentration.
 
 ### envZ:c.722T>G (p.Val241Gly)
-> Mutations in envZ, primarily missense variants, alter the regulatory activity of the sensor kinase affecting outer membrane porin expression (ompF and ompC). This decreases membrane permeability and limits antibiotic entry, particularly for cephalosporins and penicillins, facilitating adaptive resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [4](https://uroweb.ru/article/profil-antibiotikorezistentnosti-uropatogennoi-escherichia-coli-rezultaty-lecheniya), [11](https://journals.asm.org/doi/10.1128/jb.00172-24), [12](https://academic.oup.com/jac/article/71/5/1188/1750675)).
+> Mutations in envZ, primarily missense variants, alter the regulatory activity of the sensor kinase affecting outer membrane porin expression (ompF and ompC). This decreases membrane permeability and limits antibiotic entry, particularly for cephalosporins and penicillins, facilitating adaptive resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [4](https://uroweb.ru/article/profil-antibiotikorezistentnosti-uropatogennoi-escherichia-coli-rezultaty-lecheniya), [10](https://journals.asm.org/doi/10.1128/jb.00172-24)).
 
 ### rybA:n.852762A>G, mntP:c.74G>A (p.Gly25Asp), rsgA:c.756C>A (p.Ala252Ala)
 > While rybA, mntP, and rsgA lack direct evidence linking them to classic antibiotic resistance, their roles in stress response regulation, metal ion homeostasis, and ribosomal function, respectively, may indirectly support bacterial survival under antibiotic pressure.
