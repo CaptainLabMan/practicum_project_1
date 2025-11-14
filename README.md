@@ -376,7 +376,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 
 > The p.Ala544Gly variant identified in the ftsI gene is located within the catalytic domain, which spans residues 237 to 577. Amino acid substitutions occurring within the beta-lactam antibiotic binding region are known to reduce antibiotic affinity, thereby functioning through a target site modification mechanism. To evaluate the spatial relationship, we mapped the conserved serine residue at position 307 within the active site, along with the amino acid at position 544, onto the three-dimensional structure of the ftsI [protein](https://www.rcsb.org/structure/6HZQ). This visualization allowed us to assess the proximity of residue 544 to both Ser307 and the active binding site.
 
-![ftsI](images/ftsI.png)  
+> ![ftsI](images/ftsI.png)  
 > Based on the analysis of the three-dimensional structure, it can be concluded that amino acid residue 544 is situated in close proximity to both the active site and residue 307. This spatial configuration suggests a potential mechanism for reduced binding affinity of beta-lactam antibiotics, ultimately compromising their therapeutic effectiveness.  
 
 ### acrB:c.1706A>T (p.Gln569Leu)
