@@ -388,7 +388,7 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 > While rybA, mntP, and rsgA lack direct evidence linking them to classic antibiotic resistance, their roles in stress response regulation, metal ion homeostasis, and ribosomal function, respectively, may indirectly support bacterial survival under antibiotic pressure.
 
 ### Antibiotic resistance summury and treatment recommendations
-> Clinically, E. coli shows significant resistance to β-lactams (amoxicillin, cephalosporins), trimethoprim-sulfamethoxazole, fluoroquinolones, and aminoglycosides, but retains susceptibility to carbapenems such as imipenem [5](https://science-education.ru/article/view?id=30188).
+> Clinically, E. coli shows significant resistance to β-lactams (amoxicillin, cephalosporins), trimethoprim-sulfamethoxazole, fluoroquinolones, and aminoglycosides, but retains susceptibility to carbapenems such as imipenem ([5](https://science-education.ru/article/view?id=30188)).
 
 ### Conclusion
 > In conclusion, missense and regulatory mutations in ftsI, acrB, and envZ are principal contributors to antibiotic resistance in E. coli, complicating treatment options. Indirect contributions of other genes enhance adaptive capacity. These insights derive from a broad range of molecular and clinical studies.
