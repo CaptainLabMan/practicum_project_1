@@ -83,7 +83,7 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1P.fastq.gz reads/trimmed
 📈 **Trimmomatic output:**  
 > (Qual=20): Input Read Pairs: 455876 Both Surviving: 430758 (94,49%) Forward Only Surviving: 9340 (2,05%) Reverse Only Surviving: 527 (0,12%) Dropped: 15251 (3,35%)
 
-🤔 **Task:***What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
+🤔 **Task:** *What happens if we increase the quality score at all steps to 30? Try to modify the previous command (be sure to name them something distinct, so as not to overwrite your data).*  
 
 <details> 
 <summary>Show code</summary>
@@ -104,12 +104,12 @@ fastqc -o ./reads/trimmed/fastqc reads/trimmed/amp_res_1.2P.fastq.gz reads/trimm
 >> amp_res_2.fastq.gz - 455876  
 
 > **After trimming (qual=20):**
->> amp_res_1.fastq_1P.gz - 430758  
->> amp_res_2.fastq_1P.gz - 430758
+>> amp_res_1P.fastq.gz - 430758  
+>> amp_res_2P.fastq.gz - 430758
 
 > **After trimming (qual=30):**
->> amp_res_1.fastq_1.2P.gz - 363413  
->> amp_res_2.fastq_1.2P.gz - 363413
+>> amp_res_1.2P.fastq.gz - 363413  
+>> amp_res_2.2P.fastq.gz - 363413
 
 📊 **MultiQC output:**  
 > *Desctiption:*  
