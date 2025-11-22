@@ -394,9 +394,9 @@ Thus, a total of four missense variants, one synonymous variant, and one interge
 
 ### Antibiotic resistance summury and treatment recommendations
 > Therefore, considering the multiple antibiotic resistance to many common antibiotic classes, I would recommend the following groups and drugs for use:
-1. Macrolides (erythromycin, spiramycin)
-2. Polymyxins (polymyxin B)
-3. Chloramphenicol preparations (chloramphenicol)
+> 1. Macrolides (erythromycin, spiramycin)
+> 2. Polymyxins (polymyxin B)
+> 3. Chloramphenicol preparations (chloramphenicol)
 
 ### Conclusion
 > In conclusion, missense and regulatory mutations in ftsI, acrB, and envZ are principal contributors to antibiotic resistance in E. coli, complicating treatment options. Indirect contributions of other genes enhance adaptive capacity. These insights derive from a broad range of molecular and clinical studies.
