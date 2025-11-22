@@ -365,6 +365,8 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 | NC_000913.3 | 3535147 | A     | C     |  nan | PASS     |    16 |    0 |     0 |     1 |    0 | C               | missense_variant   | MODERATE        | envZ          | b3404           | transcript       | b3404              | protein_coding   |             1 | c.722T>G        | p.Val241Gly     |               722 |              1353 |              722 |             1353 |             241 |             450 |                 0 | nan                               |
 | NC_000913.3 | 4390754 | G     | T     |  nan | PASS     |    15 |    0 |     0 |     1 |    0 | T               | synonymous_variant | LOW             | rsgA          | b4161           | transcript       | b4161              | protein_coding   |             1 | c.756C>A        | p.Ala252Ala     |               756 |              1053 |              756 |             1053 |             252 |             350 |                 0 | WARNING_TRANSCRIPT_NO_START_CODON |
 
+Thus, a total of four missense variants, one synonymous variant, and one intergenic variant were identified.
+
 ## 💊🦠 Analysis of the impact of genetic variants on antibiotic resistance
 ### Mechanisms of Antibiotic Resistance  
 ![ab_resistance](images/ab_resistance.jpg)  
@@ -379,16 +381,22 @@ awk -F'\t' 'NR==1 || $29 == "0"' VarScan_results_annotated.tsv > VarScan_results
 > Based on the analysis of the three-dimensional structure, it can be concluded that amino acid residue 544 is situated in close proximity to both the active site and residue 307. This spatial configuration suggests a potential mechanism for reduced binding affinity of beta-lactam antibiotics, ultimately compromising their therapeutic effectiveness.  
 
 ### acrB:c.1706A>T (p.Gln569Leu)
-> The acrB gene encodes a component of the AcrAB-TolC efflux pump responsible for exporting various antibiotics including fluoroquinolones like ciprofloxacin, macrolides, tetracyclines, chloramphenicol, and some aminoglycosides. Both regulatory mutations increasing acrB expression and missense mutations enhancing pump functionality contribute significantly to multidrug resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [6](https://science-education.ru/article/view?id=30188), [7](https://pmc.ncbi.nlm.nih.gov/articles/PMC177656/), [8](https://microbiologyjournal.org/acrab-tolc-efflux-pump-mediated-resistance-to-carbapenems-among-clinical-isolates-of-enterobacteriaceae/), [9](https://pmc.ncbi.nlm.nih.gov/articles/PMC10315565/)). The pump expels antibiotics from the bacterial cell reducing intracellular antibiotic concentration.
+> The acrB gene encodes a component of the AcrAB-TolC efflux pump responsible for exporting various antibiotics including fluoroquinolones like ciprofloxacin, macrolides, tetracyclines, chloramphenicol, and some aminoglycosides. Both regulatory mutations increasing acrB expression and missense mutations enhancing pump functionality contribute significantly to multidrug resistance [[3](https://academic.oup.com/jac/article/71/5/1188/1750675), [6](https://science-education.ru/article/view?id=30188), [7](https://pmc.ncbi.nlm.nih.gov/articles/PMC177656/), [8](https://microbiologyjournal.org/acrab-tolc-efflux-pump-mediated-resistance-to-carbapenems-among-clinical-isolates-of-enterobacteriaceae/), [9](https://pmc.ncbi.nlm.nih.gov/articles/PMC10315565/)]. The pump expels antibiotics from the bacterial cell reducing intracellular antibiotic concentration.
 
 ### envZ:c.722T>G (p.Val241Gly)
-> Mutations in envZ, primarily missense variants, alter the regulatory activity of the sensor kinase affecting outer membrane porin expression (ompF and ompC). This decreases membrane permeability and limits antibiotic entry, particularly for cephalosporins and penicillins, facilitating adaptive resistance ([3](https://academic.oup.com/jac/article/71/5/1188/1750675), [4](https://uroweb.ru/article/profil-antibiotikorezistentnosti-uropatogennoi-escherichia-coli-rezultaty-lecheniya), [10](https://journals.asm.org/doi/10.1128/jb.00172-24)).
+> Mutations in envZ, primarily missense variants, alter the regulatory activity of the sensor kinase affecting outer membrane porin expression (ompF and ompC). This decreases membrane permeability and limits antibiotic entry, particularly for cephalosporins and penicillins, facilitating adaptive resistance [[3](https://academic.oup.com/jac/article/71/5/1188/1750675), [4](https://uroweb.ru/article/profil-antibiotikorezistentnosti-uropatogennoi-escherichia-coli-rezultaty-lecheniya), [10](https://journals.asm.org/doi/10.1128/jb.00172-24)].
+
+**Of significant importance is a study describing the development of carbapenem resistance resulting from the combination of variants in the FtsI, acrB, and envZ genes. While the specific variants reported in that study differ from those identified in our investigation, the variants we detected in these same genes may also potentially contribute to the emergence of carbapenem resistance. This possibility must be taken into account during therapeutic decision-making.** [[3](https://academic.oup.com/jac/article/71/5/1188/1750675)]
 
 ### rybA:n.852762A>G, mntP:c.74G>A (p.Gly25Asp), rsgA:c.756C>A (p.Ala252Ala)
-> While rybA, mntP, and rsgA lack direct evidence linking them to classic antibiotic resistance, their roles in stress response regulation, metal ion homeostasis, and ribosomal function, respectively, may indirectly support bacterial survival under antibiotic pressure.
+> While rybA, mntP, and rsgA lack direct evidence linking them to classic antibiotic resistance, their roles in stress response regulation, metal ion homeostasis, and ribosomal function, respectively, may indirectly support bacterial survival under antibiotic pressure.  
+> It should also be noted that the variant rybA:n.852762A>G is located in an intergenic region and does not directly affect the function of any proteins; however, it may potentially influence their expression levels. The variant rsgA:c.756C>A (p.Ala252Ala) is synonymous and does not alter the amino acid sequence of the protein, yet it may also potentially affect the regulation of gene expression.
 
 ### Antibiotic resistance summury and treatment recommendations
-> Clinically, E. coli shows significant resistance to β-lactams (amoxicillin, cephalosporins), trimethoprim-sulfamethoxazole, fluoroquinolones, and aminoglycosides, but retains susceptibility to carbapenems such as imipenem ([5](https://science-education.ru/article/view?id=30188)).
+> Therefore, considering the multiple antibiotic resistance to many common antibiotic classes, I would recommend the following groups and drugs for use:
+1. Macrolides (erythromycin, spiramycin)
+2. Polymyxins (polymyxin B)
+3. Chloramphenicol preparations (chloramphenicol)
 
 ### Conclusion
 > In conclusion, missense and regulatory mutations in ftsI, acrB, and envZ are principal contributors to antibiotic resistance in E. coli, complicating treatment options. Indirect contributions of other genes enhance adaptive capacity. These insights derive from a broad range of molecular and clinical studies.
